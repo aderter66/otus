@@ -13,4 +13,20 @@ export default [
         address: "Москва, ул Гаш asdasа",
         kpp: 333333
     }
+    ,
+    {
+        id:3,
+        name: "OTUS 31",
+        inn: 12341667,
+        address: "Москва, ул Гаш asdasа",
+        kpp: 333333
+    }
+    ,
+    {
+        id:4,
+        name: "OTUS 41",
+        inn: 12341667,
+        address: "Москва, ул Гаш asdasа",
+        kpp: 333333
+    }
 ]

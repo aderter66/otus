@@ -2,11 +2,16 @@ import html from "./app.html";
 import './app.css'
 import items from "./items";
 
+import { renderTable } from './contragents/table/table.js';
+import { openModalForEdit, actionsOnSave} from './contragents/modal/modal.js';
+
+
+renderTable({
+  openEditModal: openModalForEdit,
+});
+
+actionsOnSave({
+  onSave: () => renderTable({ openEditModal: openModalForEdit }),
+});
 
 const table = document.getElementById('contractor-table');
-const modalForm = document.getElementById('add-item-modal');
-const modalFormInputName = document.getElementById('name');
-const modalFormInputAdress = document.getElementById('adress');
-const modalFormInputInn = document.getElementById('inn');
-const modalFormInputKpp = document.getElementById('kpp');
-

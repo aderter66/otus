@@ -21,8 +21,8 @@
           <button
             type="button"
             id="add-new"
-            data-modal-target="add-item-modal"
-            data-modal-toggle="add-item-modal"
+            data-modal-target="add-edit-contractor-modal"
+            data-modal-toggle="add-edit-contractor-modal"
             class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -67,7 +67,7 @@
 
     <!-- MODAL -->
     <div
-    id="add-item-modal"
+    id="add-edit-contractor-modal"
     tabindex="-1"
     aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -98,7 +98,7 @@
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">адрес</label>
-            <input type="number" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            <input type="text" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="адрес">
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">КПП</label>
@@ -109,17 +109,17 @@
         <div class="flex items-center p-4 rounded-b">
           <button
             type="button"
-            id="save"
-            data-modal-hide="add-item-modal"
+            id="modal-save"
+            data-modal-hide="add-edit-contractor-modal"
             class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             Сохранить
           </button>
           <button
           type="button"
-          id="cancel"
-          data-modal-hide="add-item-modal"
-          class="w-full text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5"
+          id="modal-undo"
+          data-modal-hide="add-edit-contractor-modal"
+          class="w-full text-white bg-[#f33333] hover:bg-[#f33333] font-medium rounded-lg text-sm px-5 py-2.5"
         >
           Отменить
         </button>
@@ -129,6 +129,7 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-  <script src="app/table.js"></script>
+  <script src="app/contragents/table/table.js"></script>
+  <script src="app/contragents/modal/modal.js"></script>
   </body>
 </html>
