@@ -18,8 +18,7 @@ let openForEdit = null;
 let updateTable = null;
 
 openModal.addEventListener('click', (event) =>{
-  modal.show();
-  clear();
+  openModalForEdit();
 })
 
 save.addEventListener('click', (event) => {
