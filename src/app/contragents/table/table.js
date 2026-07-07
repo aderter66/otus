@@ -57,13 +57,13 @@ export function renderTable({ openEditModal }) {
     row.className = 'bg-white border-b hover:bg-gray-50';
     row.dataset.id = contractor.id;
 
-    row.appendChild(createRowColumn(contractor.id));
     row.appendChild(createRowColumn(contractor.name));
     row.appendChild(createRowColumn(contractor.inn));
     row.appendChild(createRowColumn(contractor.address));
     row.appendChild(createRowColumn(contractor.kpp));
     row.appendChild(createRowColumnRemove(contractor.id, openEditModal));
     row.addEventListener('dblclick', (event) => {
+      event.stopPropagation();
       const row = event.target.closest('tr[data-id]');
       if (!row) return;
       openEditModal(Number(row.dataset.id));

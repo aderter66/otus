@@ -21,8 +21,6 @@
           <button
             type="button"
             id="add-new"
-            data-modal-target="add-edit-contractor-modal"
-            data-modal-toggle="add-edit-contractor-modal"
             class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -44,7 +42,6 @@
         <table class="w-full text-sm text-left text-black">
           <thead class="text-sm text-heading uppercase">
             <tr>
-              <th class="px-6 py-3">уникальный идентификатор</th>
               <th class="px-6 py-3">наименование</th>
               <th class="px-6 py-3">ИНН</th>
               <th class="px-6 py-3">адрес</th>
@@ -94,15 +91,15 @@
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">ИНН</label>
-            <input type="number" id="inn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="ИНН">
+            <input type="text" inputmode="numeric" maxlength="11" id="inn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="ИНН">
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">адрес</label>
-            <input type="text" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="адрес">
+            <input type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="адрес">
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">КПП</label>
-            <input type="number" id="kpp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="КПП">
+            <input type="text" maxlength="9" id="kpp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="КПП">
           </div>
         </div>
   
@@ -110,7 +107,6 @@
           <button
             type="button"
             id="modal-save"
-            data-modal-hide="add-edit-contractor-modal"
             class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             Сохранить
@@ -118,7 +114,6 @@
           <button
           type="button"
           id="modal-undo"
-          data-modal-hide="add-edit-contractor-modal"
           class="w-full text-white bg-[#f33333] hover:bg-[#f33333] font-medium rounded-lg text-sm px-5 py-2.5"
         >
           Отменить
@@ -129,7 +124,5 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-  <script src="app/contragents/table/table.js"></script>
-  <script src="app/contragents/modal/modal.js"></script>
   </body>
 </html>

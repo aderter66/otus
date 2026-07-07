@@ -5,15 +5,22 @@ const form = document.getElementById('add-edit-contractor-modal');
 const modal = new Modal(form);
 
 const inputName = document.getElementById('name');
-const inputAdress = document.getElementById('adress');
+const inputAddress = document.getElementById('address');
 const inputInn = document.getElementById('inn');
 const inputKpp = document.getElementById('kpp');
 
 const save = document.getElementById('modal-save')
 const undo = document.getElementById('modal-undo')
 
+const openModal = document.getElementById('add-new')
+
 let openForEdit = null;
 let updateTable = null;
+
+openModal.addEventListener('click', (event) =>{
+  modal.show();
+  clear();
+})
 
 save.addEventListener('click', (event) => {
   saveContractor(event);
@@ -25,13 +32,17 @@ undo.addEventListener('click', (event) => {
 })
 
 export function openModalForEdit(id){
-  const contractor = items.find((item) => item.id === id);
-  if (!contractor) return;
-  inputName.value = contractor.name;
-  inputInn.value = contractor.inn;
-  inputAdress.value = contractor.address;
-  inputKpp.value = contractor.kpp;
-  openForEdit = id;
+  if(id !== undefined){
+    const contractor = items.find((item) => item.id === id);
+    if (!contractor) return;
+    inputName.value = contractor.name;
+    inputInn.value = contractor.inn;
+    inputAddress.value = contractor.address;
+    inputKpp.value = contractor.kpp;
+    openForEdit = id;
+  }else{
+    clear();
+  }
   modal.show();
 }
 
@@ -39,16 +50,21 @@ function getFormData() {
   return {
     name: inputName.value.trim(),
     inn: inputInn.value.trim(),
-    address: inputAdress.value.trim(),
+    address: inputAddress.value.trim(),
     kpp: inputKpp.value.trim(),
   };
 }
 
-function closeModal() {
+function clear(){
   inputName.value = '';
   inputInn.value = '';
-  inputAdress.value = '';
+  inputAddress.value = '';
   inputKpp.value = '';
+  openForEdit = null;
+}
+
+function closeModal() {
+  clear();
   modal.hide();
 }
 
@@ -59,16 +75,13 @@ export function actionsOnSave({ onSave }) {
 function saveContractor(event) {
   event.preventDefault();
   const data = getFormData();
-  let index;
   if(openForEdit){
-    index = items.findIndex((item) => item.id === openForEdit);
+    let index = items.findIndex((item) => item.id === openForEdit);
     if (index !== -1) {
       items[index] = { id: openForEdit, ...data };
     }
   }else{
-    if(items.length){
-      index = Math.max(...items.map((item) => item.id)) + 1;
-    }
+    let index = items.length ? Math.max(...items.map((item) => item.id)) + 1 : 1;
     items.push({ id: index, ...data });
   }
   
