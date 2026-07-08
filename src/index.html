@@ -20,8 +20,7 @@
           </a>
           <button
             type="button"
-            data-modal-target="add-item-modal"
-            data-modal-toggle="add-item-modal"
+            id="add-new"
             class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -43,44 +42,13 @@
         <table class="w-full text-sm text-left text-black">
           <thead class="text-sm text-heading uppercase">
             <tr>
-              <th class="px-6 py-3">Transaction</th>
-              <th class="px-6 py-3">DATE & TIME</th>
-              <th class="px-6 py-3">amount</th>
-              <th class="px-6 py-3">status</th>
+              <th class="px-6 py-3">наименование</th>
+              <th class="px-6 py-3">ИНН</th>
+              <th class="px-6 py-3">адрес</th>
+              <th class="px-6 py-3">КПП</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="bg-white border-b hover:bg-gray-50">
-              <td class="px-6 py-4">Payment from <b>Bonnie Green</b></td>
-              <td class="px-6 py-4 text-gray-500">Apr 23, 2021</td>
-              <td class="px-6 py-4 text-gray-500"><b>$2300</b></td>
-              <td class="px-6 py-4">
-                <span class="bg-[#8FBC8F] text-[#006400] text-xs font-medium px-2.5 py-0.5 rounded">
-                    Completed
-                </span>
-              </td>
-            </tr>
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <td class="px-6 py-4">Payment refund to <b>#00910</b></td>
-                <td class="px-6 py-4 text-gray-500">Apr 23, 2021</td>
-                <td class="px-6 py-4 text-gray-500"><b>-$670</b></td>
-                <td class="px-6 py-4">
-                  <span class="bg-[#8FBC8F] text-[#006400] text-xs font-medium px-2.5 py-0.5 rounded">
-                      Completed
-                  </span>
-                </td>
-              </tr>
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <td class="px-6 py-4">Payment refund to <b>#087651</b></td>
-                <td class="px-6 py-4 text-gray-500">Apr 18, 2021</td>
-                <td class="px-6 py-4 text-gray-500"><b>$234</b></td>
-                <td class="px-6 py-4">
-                  <span class="bg-[#FDE8E8] text-[#B45151] text-xs font-medium px-2.5 py-0.5 rounded">
-                      Cancelled
-                  </span>
-                </td>
-            </tr>  
-          </tbody>
+          <tbody id="contractor-table"></tbody>
         </table>
       </div>
     </main>
@@ -96,7 +64,7 @@
 
     <!-- MODAL -->
     <div
-    id="add-item-modal"
+    id="add-edit-contractor-modal"
     tabindex="-1"
     aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -105,10 +73,9 @@
       <div class="relative bg-white rounded-lg shadow">
   
         <div class="flex items-center justify-between p-4 border-b rounded-t">
-          <h3 class="text-xl font-semibold text-gray-900">Add data</h3>
+          <h3 class="text-xl font-semibold text-gray-900">Контрагент</h3>
           <button
             type="button"
-            data-modal-hide="add-item-modal"
             class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 1L6.14286 6.14286M6.14286 6.14286L11.2857 11.2857M6.14286 6.14286L11.2857 1M6.14286 6.14286L1 11.2857" stroke="#9CA3AF" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
@@ -118,23 +85,38 @@
   
         <div class="p-4 space-y-4">
           <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">Transaction</label>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="My transaction">
+            <label class="block mb-2 text-sm font-medium text-gray-900">наименование</label>
+            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="наименование контрагента">
           </div>
           <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">Amount</label>
-            <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="2300">
+            <label class="block mb-2 text-sm font-medium text-gray-900">ИНН</label>
+            <input type="text" inputmode="numeric" maxlength="11" id="inn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="ИНН">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">адрес</label>
+            <input type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="адрес">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">КПП</label>
+            <input type="text" maxlength="9" id="kpp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="КПП">
           </div>
         </div>
   
         <div class="flex items-center p-4 rounded-b">
           <button
             type="button"
-            data-modal-hide="add-item-modal"
+            id="modal-save"
             class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
           >
-            Add
+            Сохранить
           </button>
+          <button
+          type="button"
+          id="modal-undo"
+          class="w-full text-white bg-[#f33333] hover:bg-[#f33333] font-medium rounded-lg text-sm px-5 py-2.5"
+        >
+          Отменить
+        </button>
         </div>
   
       </div>
