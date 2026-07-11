@@ -7,7 +7,7 @@ import initialItems from './app/items.js';
 const rootElement = document.getElementById('root');
 
 function App() {
-  const [items, setItems] = useState<Object>(initialItems);
+  const [items, setItems] = useState(initialItems);
 
   const handleDelete = (id) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
