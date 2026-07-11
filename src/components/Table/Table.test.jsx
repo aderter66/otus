@@ -38,6 +38,8 @@ describe('Table', () => {
 
     expect(screen.getByText('OTUS 1')).toBeInTheDocument();
     expect(screen.getByText('00045678919')).toBeInTheDocument();
+    expect(screen.getByText('Санкт-Петербург, Невский пр 10')).toBeInTheDocument();
+    expect(screen.getByText('02312GA32')).toBeInTheDocument();
   });
 
   test('renders delete button for each row', () => {
