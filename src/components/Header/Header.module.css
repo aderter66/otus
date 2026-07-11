@@ -1,0 +1,35 @@
+.header {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 32px;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  background: #1d4ed8;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  background: #1e40af;
+}
