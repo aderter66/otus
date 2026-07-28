@@ -1,3 +1,3 @@
 import 'flowbite';
-import './style.css'
-import './app/app'
+import './style.css';
+import './index.jsx';

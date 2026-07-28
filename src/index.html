@@ -12,47 +12,7 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen flex flex-col">
-    <!-- HEADER -->
-    <header class="bg-white px-4 py-3">
-        <div class="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between">
-          <a href="#" class="flex items-center space-x-3">
-            <img src="assets/logo.svg" class="h-8" alt="Logo">
-          </a>
-          <button
-            type="button"
-            id="add-new"
-            class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <rect width="16" height="16" fill="url(#pattern0_3_11)"/>
-                <defs>
-                <pattern id="pattern0_3_11" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlink:href="#image0_3_11" transform="scale(0.03125)"/>
-                    </pattern>
-                <image id="image0_3_11" width="32" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA/UlEQVR4Xu2XjQ2CQAyFGcERGIURGOFGYANXYAMdwQ1wA0e4ERzh2QZMzhf1fnpGNHxJE5O2zy8cYmiajTUDoJUapaaEcrxvAvOXe+Sx55xiJMxxeiJ1JCToyMkZ2CVgE1BsErALKOUSqCOglEmgnoDScX4UxAW8VC/VLZ/fMXJ+FMQFhmB24CZxCLOTQFzABbOOm8QmYBbwyLiTMf+PXIN9s8CJ+zFo3yzgpVqeeYXM7padO2YBRS/pFFQfzHbUCy+/UkWAccGs4ybx/wJfeRJeMP/c+IZ7xkcEcvhNgdi55uA4PwrSzjYFj4yH2AO6iPkozoWlLzUt526sihuPv6my9N45vgAAAABJRU5ErkJggg=="/>
-                </defs>
-            </svg>
-            Добавить
-          </button>
-        </div>
-      </header>
-    <!-- TABLE -->
-    <main>
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left text-black">
-          <thead class="text-sm text-heading uppercase">
-            <tr>
-              <th class="px-6 py-3">наименование</th>
-              <th class="px-6 py-3">ИНН</th>
-              <th class="px-6 py-3">адрес</th>
-              <th class="px-6 py-3">КПП</th>
-            </tr>
-          </thead>
-          <tbody id="contractor-table"></tbody>
-        </table>
-      </div>
-    </main>
-
+    <div id="root"></div>
     <!-- FOOTER -->
     <footer class="bg-white mt-auto">
         <div class="max-w-screen-xl mx-auto text-center ">
@@ -61,67 +21,5 @@
           </span>
         </div>
       </footer>
-
-    <!-- MODAL -->
-    <div
-    id="add-edit-contractor-modal"
-    tabindex="-1"
-    aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-  >
-    <div class="relative p-4 w-full max-w-md max-h-full">
-      <div class="relative bg-white rounded-lg shadow">
-  
-        <div class="flex items-center justify-between p-4 border-b rounded-t">
-          <h3 class="text-xl font-semibold text-gray-900">Контрагент</h3>
-          <button
-            type="button"
-            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L6.14286 6.14286M6.14286 6.14286L11.2857 11.2857M6.14286 6.14286L11.2857 1M6.14286 6.14286L1 11.2857" stroke="#9CA3AF" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>                  
-        </button>
-        </div>
-  
-        <div class="p-4 space-y-4">
-          <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">наименование</label>
-            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="наименование контрагента">
-          </div>
-          <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">ИНН</label>
-            <input type="text" inputmode="numeric" maxlength="11" id="inn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="ИНН">
-          </div>
-          <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">адрес</label>
-            <input type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="адрес">
-          </div>
-          <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900">КПП</label>
-            <input type="text" maxlength="9" id="kpp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="КПП">
-          </div>
-        </div>
-  
-        <div class="flex items-center p-4 rounded-b">
-          <button
-            type="button"
-            id="modal-save"
-            class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
-          >
-            Сохранить
-          </button>
-          <button
-          type="button"
-          id="modal-undo"
-          class="w-full text-white bg-[#f33333] hover:bg-[#f33333] font-medium rounded-lg text-sm px-5 py-2.5"
-        >
-          Отменить
-        </button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
 </html>
