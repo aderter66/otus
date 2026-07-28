@@ -6,7 +6,8 @@
     "scripts": {
         "test": "jest",
         "build": "webpack --mode production",
-        "serve": "webpack serve --mode development"
+        "serve": "webpack serve --mode development",
+        "api": "json-server --watch db.json --port 3001"
     },
     "author": "",
     "license": "ISC",
@@ -24,6 +25,7 @@
         "html-webpack-plugin": "^5.6.0",
         "jest": "^30.4.2",
         "jest-environment-jsdom": "^30.4.1",
+        "json-server": "^0.17.4",
         "mini-css-extract-plugin": "^2.9.0",
         "postcss": "^8.4.38",
         "postcss-loader": "^8.1.1",
